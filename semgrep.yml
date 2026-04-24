@@ -1,0 +1,22 @@
+rules:
+  - id: php-sqli-string-concat
+    message: "Posible SQL Injection por construccion manual de query."
+    severity: ERROR
+    languages: [php]
+    pattern-regex: (?i)SELECT\s+\*\s+FROM\s+users\s+WHERE\s+username='\$user'\s+AND\s+password='\$pass'
+
+  - id: php-xss-echo-get
+    message: "Posible XSS: salida directa de datos de $_GET."
+    severity: ERROR
+    languages: [php]
+    pattern-either:
+      - pattern: echo "Bienvenido " . $_GET[$PARAM];
+      - pattern: echo "Bienvenido " . $displayUser;
+
+  - id: php-hardcoded-db-credential
+    message: "Posibles credenciales hardcodeadas en archivo de configuracion."
+    severity: WARNING
+    languages: [php]
+    pattern-either:
+      - pattern: $db_password = "...";
+      - pattern: $password = "...";
