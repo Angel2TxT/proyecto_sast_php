@@ -1,0 +1,27 @@
+1. clonan el proyecto.
+
+2. crean la base de datos que se encuentra ahi 
+
+3. instalan: pip install semgrep
+
+4. luego inicializan la pagina 
+	php -S localhost:8000 
+
+	y hacen las respectivas pruebas 
+
+    4.1	login:
+	' OR 1=1 -- 
+
+	en la contraseña pongan lo que quieran 
+
+
+
+    4.2 esto lo ponen en el buscador:
+	http://localhost:8000/dashboard.php?user=<script>alert('XSS')</script>
+
+
+    5. y al final en consola ponen este comando 
+
+	semgrep scan --config=semgrep.yml . 
+
+	o usan el automatizado que es el de panel de semgrep 
